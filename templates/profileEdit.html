@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} <title>Update Profile</title> {% endblock title %}
+{% block content %}
+    <div class="container mt-3">
+        <form method="post" class="form-control">{% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="btn btn-primary d-inline">Save</button>
+            <a href="{% url 'authApp:logout' %}" class="ms-3 btn btn-info">Logout</a>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{%  extends 'base.html' %}
+{% block title %}<title>All ads</title>{% endblock title %}
+{% block content %}
+<div class="row justify-content-evenly mt-1">
+    {% for ad in ads %}
+        <div class="col-sm-1 col-lg-3">
+            <div class="card mb-2" style="width: 18rem; background-color: RGB(146, 168, 209)">
+                <img src="{{ ad.image.url }}" class="card-img-middle img-thumbnail" style="max-width: 18em; max-height: 13.5em;" alt="There is a photo">
+                <div class="card-body" style="background-color: RGB(146, 168, 209)">
+                <h5 class="card-title">{{ ad.name }}</h5>
+                <p class="card-text">{{ ad.description|truncatewords:10 }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item" style="background-color: RGB(146, 168, 209)">{{ ad.subject }}</li>
+                <li class="list-group-item" style="background-color: RGB(146, 168, 209)">{{ ad.price }}</li>
+                <li class="list-group-item" style="background-color: RGB(146, 168, 209)">{{ ad.publish_time|date:'Y-m-d H:i' }}</li>
+                </ul>
+                <div class="card-body">
+                <a href="{% url 'ads:ads_detail' ad.pk %}" class="card-link text-decoration-none"><button class="btn btn-primary">Details</button></a>
+                <a href="{% url 'ads:ads_buy' ad.pk %}" class="card-link"><button class="btn btn-primary">Buy</button></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

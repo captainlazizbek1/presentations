@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-sm-12 mt-2">
+            <form method="post" class="form-control">{% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-primary d-inline">Login</button>
+                <p class="d-inline ms-1">Have not registered yet? <a href="{% url 'authApp:register' %}">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

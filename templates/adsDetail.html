@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{ ad.name }}</title>
+{% endblock title %}
+{% block content %}
+  <div class="row justify-content-evenly">
+    <div class="col-3">
+        <div class="card mb-2 font-monospace" style="width: 18rem;">
+            <img src="{{ ad.image.url }}" class="card-img-middle img-thumbnail" style="max-width: 18em; max-height: 13.5em;" alt="There is a photo">
+            <div class="card-body">
+            <h5 class="card-title">{{ ad.name }}</h5>
+            <p class="card-text">{{ ad.description|truncatewords:10 }}</p>
+            </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ ad.subject }}</li>
+                    <li class="list-group-item">{{ ad.price }}</li>
+                    <li class="list-group-item">{{ ad.publish_time|date:'Y-m-d H:i' }}</li>
+                </ul>
+            <div class="card-body">
+                <a href="{% url 'ads:ads_buy' ad.pk %}" class="card-link text-decoration-none text-dark"><button class="btn btn-outline-primary font-monospace">Buy</button></a>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
